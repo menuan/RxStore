@@ -1,24 +1,53 @@
-//
-//  ViewController.swift
-//  RxStore
-//
-//  Created by 11ddcfbd11fb700ce8c57b918b395eee19c0fe65 on 06/17/2019.
-//  Copyright (c) 2019 11ddcfbd11fb700ce8c57b918b395eee19c0fe65. All rights reserved.
-//
-
 import UIKit
+import RxSwift
+import RxStore
+import RxCocoa
 
 class ViewController: UIViewController {
 
+    weak var store: Store?
+
+    var disposable: Disposable?
+
+    @IBOutlet weak var countLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        store = Resolver.resolve()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        disposable = store?.state
+            .flatMap { states -> Driver<ExampleStateStruct> in
+                for state in states {
+                    guard let value = state.1 as? ExampleStateStruct else { continue }
+                    return Driver<ExampleStateStruct>.just(value)
+                }
+                fatalError("You need to add `ExampleStateStruct` first")
+            }
+            .distinctUntilChanged()
+            .map { state -> String in
+                return "\(state.count)"
+            }
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                self?.countLabel.text = $0
+            }, onCompleted: nil, onDisposed: nil)
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        disposable?.dispose()
+        disposable = nil
+    }
+
+    @IBAction func onPlusTouchUp(_ sender: Any) {
+        store?.dispatch(action: ExampleAction.increment)
+    }
+
+    @IBAction func onMinusTouchUp(_ sender: Any) {
+        store?.dispatch(action: ExampleAction.decrement)
+    }
 }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,8 +20,41 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfJ-9P-97T">
+                                <rect key="frame" x="182.5" y="260" width="10.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bK-KO-vhG">
+                                <rect key="frame" x="205" y="255.5" width="30" height="30"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="onPlusTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9sg-bO-ALZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahB-X5-4Ke">
+                                <rect key="frame" x="140.5" y="255.5" width="30" height="30"/>
+                                <state key="normal" title="-"/>
+                                <connections>
+                                    <action selector="onMinusTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3EG-OD-lRL"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ahB-X5-4Ke" firstAttribute="centerY" secondItem="gfJ-9P-97T" secondAttribute="centerY" id="3xU-Um-0NT"/>
+                            <constraint firstItem="gfJ-9P-97T" firstAttribute="leading" secondItem="ahB-X5-4Ke" secondAttribute="trailing" constant="12" id="7sS-L2-2ki"/>
+                            <constraint firstItem="gfJ-9P-97T" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="9UJ-9w-njX"/>
+                            <constraint firstItem="gfJ-9P-97T" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="240" id="HwY-Ku-pxG"/>
+                            <constraint firstItem="8bK-KO-vhG" firstAttribute="centerY" secondItem="gfJ-9P-97T" secondAttribute="centerY" id="iYk-oi-3HW"/>
+                            <constraint firstItem="8bK-KO-vhG" firstAttribute="leading" secondItem="gfJ-9P-97T" secondAttribute="trailing" constant="12" id="mYX-8v-BhP"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="countLabel" destination="gfJ-9P-97T" id="Iql-Or-awx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
