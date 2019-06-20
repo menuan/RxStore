@@ -7,9 +7,16 @@ enum ExampleState: Int {
     case one, two, three
 }
 
-struct ExampleStateStruct: SubstateType, Equatable {
+struct ExampleStateStruct: Equatable {
     let id: UUID
     let count: Int
+}
+
+extension ExampleStateStruct: SubstateType {
+    init() {
+        id = UUID()
+        count = 0
+    }
 }
 
 let reducer: Store.Reducer = { (state, action) -> Store.StoreState in
