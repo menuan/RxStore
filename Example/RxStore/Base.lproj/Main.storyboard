@@ -30,16 +30,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bK-KO-vhG">
                                 <rect key="frame" x="205" y="255.5" width="30" height="30"/>
                                 <state key="normal" title="+"/>
-                                <connections>
-                                    <action selector="onPlusTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9sg-bO-ALZ"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahB-X5-4Ke">
                                 <rect key="frame" x="140.5" y="255.5" width="30" height="30"/>
                                 <state key="normal" title="-"/>
-                                <connections>
-                                    <action selector="onMinusTouchUp:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3EG-OD-lRL"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -54,6 +48,8 @@
                     </view>
                     <connections>
                         <outlet property="countLabel" destination="gfJ-9P-97T" id="Iql-Or-awx"/>
+                        <outlet property="minusButton" destination="ahB-X5-4Ke" id="OGn-T4-k0A"/>
+                        <outlet property="plusButton" destination="8bK-KO-vhG" id="yYp-p2-Ni5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

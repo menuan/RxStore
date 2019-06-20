@@ -41,7 +41,6 @@ class Logger: MiddlewareType {
             }, onCompleted: nil, onDisposed: nil)
             .disposed(by: disposeBag)
     }
-
 }
 
 func getStore() -> Store {

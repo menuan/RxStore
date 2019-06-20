@@ -25,7 +25,9 @@ public protocol StoreType: class {
     func register(middlewares: Array<MiddlewareType>)
 }
 
-public protocol SubstateType {}
+public protocol SubstateType {
+    init()
+}
 
 public protocol ActionType {}
 
@@ -83,7 +85,6 @@ public final class Store: StoreType {
     public func register(middlewares: Array<MiddlewareType>) {
         middlewares.forEach { self.register(middleware: $0) }
     }
-
 
     public static func reduce(state: StoreState, action: Store.Action) -> StoreState {
         switch action {
