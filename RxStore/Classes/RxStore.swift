@@ -10,6 +10,8 @@ public protocol StoreType: class {
      */
     init(reducer: @escaping (Dictionary<Int, SubstateType>, ActionType) -> Dictionary<Int, SubstateType>)
 
+    var currentState: Dictionary<Int, SubstateType> { get }
+
     var state: Driver<Dictionary<Int, SubstateType>> { get }
 
     var lastDispatchedAction: Driver<ActionType?> { get }
@@ -48,6 +50,7 @@ public final class Store: StoreType {
     let reducer: Reducer
 
     public var state: Driver<StoreState> { return _state.asDriver() }
+    public var currentState: Dictionary<Int, SubstateType> { return _state.value }
     public var lastDispatchedAction: Driver<ActionType?> { return _lastDispatchedAction.asDriver() }
 
     public var middlewares: Array<MiddlewareType> { return _middlewares }
